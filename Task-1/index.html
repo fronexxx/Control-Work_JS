@@ -4,88 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-format.css">
+    <link rel="stylesheet" href="css/tablet-format.css">
     <title>Test</title>
-    <style>
-        body {
-            background: cornflowerblue;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container{
-            width: 640px;
-            height: 560px;
-            background: white;
-        }
-
-        #info {
-            margin-left: 40px;
-        }
-
-        h1 {
-            font-size: 26px;
-            font-family: sans-serif;
-
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            color: grey;
-        }
-
-        input[type="text"] {
-            width: 400px;
-            margin-right: 30px;
-            border: 1px solid lightgray;
-
-        }
-
-        .main_and_buttons {
-            display: flex;
-
-        }
-
-        #PairList {
-            width: 400px;
-            height: 320px;
-            overflow-y: auto;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            border: 1px solid lightgrey;
-            margin-top: -16px;
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 32px;
-            margin-left: 40px;
-
-        }
-
-        #Delete {
-            margin-top: 10px;
-        }
-
-        p {
-            font-size: 14px;
-            color: grey;
-        }
-
-
-    </style>
 </head>
 <body>
 <div class="container">
     <div id="info">
         <h1>Test</h1>
         <form name="formNameValue">
+            <p id="error"></p>
             <label for="input"> Name/Value Pair </label>
-            <input type="text" name="NameValue" id="input">
+            <input type="text" name="NameValue" id="input" placeholder="asd=123">
             <button>Add</button>
         </form>
         <div class="main_and_buttons">
@@ -94,9 +25,13 @@
                 <div id="PairList"></div>
             </div>
             <div class="buttons">
-                <button id="SortByName">Sort by Name</button>
-                <button id="SortByValue">Sort by Value</button>
-                <button id="Delete">Delete</button>
+                <div class="two-buttons">
+                    <button id="SortByName">Sort by Name</button>
+                    <button id="SortByValue">Sort by Value</button>
+                </div>
+                <div>
+                    <button id="Delete">Delete</button>
+                </div>
             </div>
         </div>
     </div>

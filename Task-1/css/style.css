@@ -1,0 +1,85 @@
+body {
+    background: cornflowerblue;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 640px;
+    height: 560px;
+    background: white;
+}
+
+#info {
+    margin-left: 40px;
+}
+
+h1 {
+    font-size: 26px;
+    font-family: sans-serif;
+
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: grey;
+}
+
+input[type="text"] {
+    width: 400px;
+    margin-right: 30px;
+    border: 1px solid lightgray;
+
+}
+
+.main_and_buttons {
+    display: flex;
+
+}
+
+#PairList {
+    width: 400px;
+    height: 320px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    margin-top: -16px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 32px;
+    margin-left: 40px;
+
+}
+button:active{
+    background: silver;
+}
+button{
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    background: linear-gradient(181deg,rgba(255, 255, 255, 1) 27%, rgba(232, 232, 232, 1) 100%);
+}
+.two-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#Delete {
+    margin-top: 10px;
+}
+
+p {
+    font-size: 14px;
+    color: grey;
+}
+#error{
+    color: red;
+}

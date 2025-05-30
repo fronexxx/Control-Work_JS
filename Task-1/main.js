@@ -2,29 +2,29 @@ let form = document.forms.formNameValue;
 let divPairList = document.getElementById('PairList');
 let deleteBtn = document.getElementById('Delete');
 let sortByName = document.getElementById('SortByName');
+let sortByValue = document.getElementById('SortByValue');
+let pError = document.getElementById('error');
 let arrNameValue = [];
+
 
 
 // add
 form.onsubmit = function (event) {
-    divPairList.innerText = '';
     event.preventDefault();
-    let ul = document.createElement('ul');
     let NameValue = this.NameValue.value;
     let matchNameValue = NameValue.match(/^\s*([a-zA-Z0-9]+)\s*=\s*([a-zA-Z0-9]+)\s*/);
+    if (!matchNameValue) {
+        pError.innerText = 'Please enter correct form!!! Example: asd=123'
+    }else{
+        pError.innerText = '';
+    }
     let obj = {
         name: matchNameValue[1],
         value: matchNameValue[2]
-    }
+    };
     arrNameValue.push(obj);
-    console.log(obj);
-    console.log(arrNameValue);
-    for (const oneNameValue of arrNameValue) {
-        let li = document.createElement('li');
-        li.innerText = `${oneNameValue.name} = ${oneNameValue.value}`;
-        ul.appendChild(li);
-    }
-    divPairList.appendChild(ul);
+
+    renderNameValueList()
 
 };
 
@@ -33,16 +33,6 @@ deleteBtn.onclick = function () {
     divPairList.innerText = '';
     arrNameValue = [];
 };
-
-// sort by name
-sortByName.onclick = function (){
-    arrNameValue.sort((a, b) => {
-        if (a.name > b.name) return 1;
-        if (b.name > a.name) return -1;
-        return 0;
-    })
-    renderNameValueList();
-}
 
 function renderNameValueList() {
     divPairList.innerText = '';
@@ -54,3 +44,38 @@ function renderNameValueList() {
     }
     divPairList.appendChild(ul);
 }
+
+// sort by name
+sortByName.onclick = function (){
+    arrNameValue.sort((a, b) => {
+        if (a.name > b.name) return 1;
+        if (b.name > a.name) return -1;
+        return 0;
+    })
+    renderNameValueList();
+}
+
+// sort by value
+sortByValue.onclick = function () {
+    arrNameValue.sort((a, b) => {
+        let aValue = parseInt(a.value);
+        let bValue = parseInt(b.value);
+
+        let aIsNum = typeof aValue === 'number' && !isNaN(aValue);
+        let bIsNum = typeof bValue === 'number' && !isNaN(bValue);
+
+        if (aIsNum && bIsNum) {
+            return aValue - bValue;
+        }else if (a.value > b.value) {
+            return 1;
+        }else if (b.value > a.value) {
+            return -1;
+        } else {
+            return 0;
+        }
+
+    })
+    renderNameValueList();
+};
+
+
