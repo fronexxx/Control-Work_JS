@@ -1,0 +1,85 @@
+*{
+    box-sizing: border-box;
+    list-style-type: none;
+}
+#name_id{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.user-div{
+    background: silver;
+    width: 400px;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.first-h4{
+    margin-bottom: -10px;
+}
+#postOfCurrentUser{
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+
+}
+#postComments{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+}
+
+.infoDiv{
+    padding-left: 10px;
+    background: silver;
+    border-radius: 4px;
+}
+.users{
+    text-align: center;
+    color: slateblue;
+}
+.user-details-h2{
+    text-align: center;
+    color: red;
+}
+.post-details-h2{
+    text-align: center;
+    color: red;
+}
+#postTitles{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+.user-details-info{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-top: -10px;
+    background: silver;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+a{
+    text-decoration: none;
+}
+.user-details-a{
+    padding-bottom: 10px;
+}
+a:hover{
+    font-size: 17px;
+    color: blue;
+}
+
+a:active{
+    color: red;
+}
+li::before{
+    content: "- ";
+    margin-right: 4px;
+}
