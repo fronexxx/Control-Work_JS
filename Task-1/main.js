@@ -10,6 +10,7 @@ let arrNameValue = [];
 
 // add
 form.onsubmit = function (event) {
+
     event.preventDefault();
     let NameValue = this.NameValue.value;
     let matchNameValue = NameValue.match(/^\s*([a-zA-Z0-9]+)\s*=\s*([a-zA-Z0-9]+)\s*/);
@@ -26,26 +27,59 @@ form.onsubmit = function (event) {
 
     renderNameValueList()
 
+    this.NameValue.value = '';
+
 };
 
 // delete
+let selectedIndexes = [];
 deleteBtn.onclick = function () {
-    divPairList.innerText = '';
-    arrNameValue = [];
+    if (selectedIndexes.length > 0) {
+        selectedIndexes.sort((a, b) => b - a).forEach(index => {
+            arrNameValue.splice(index, 1);
+        });
+        selectedIndexes = [];
+        renderNameValueList();
+    } else {
+        arrNameValue = [];
+        divPairList.innerText = '';
+    }
 };
 
 function renderNameValueList() {
     divPairList.innerText = '';
     let ul = document.createElement('ul');
-    for (const pair of arrNameValue) {
+
+    arrNameValue.forEach((value, index) => {
         let li = document.createElement('li');
-        li.innerText = `${pair.name} = ${pair.value}`;
+        li.innerText = `${value.name} = ${value.value}`;
+        li.style.cursor = 'pointer';
+        li.style.padding = '5px';
+
+
+        if (selectedIndexes.includes(index)) {
+            li.style.backgroundColor = 'lightblue';
+        }
+
+
+        li.onclick = function () {
+            if (selectedIndexes.includes(index)) {
+                selectedIndexes = selectedIndexes.filter(i => i !== index);
+            } else {
+                selectedIndexes.push(index);
+            }
+            renderNameValueList();
+        };
+
         ul.appendChild(li);
-    }
+    });
+
     divPairList.appendChild(ul);
 }
 
-// sort by name
+
+
+
 sortByName.onclick = function (){
     arrNameValue.sort((a, b) => {
         if (a.name > b.name) return 1;
@@ -77,5 +111,4 @@ sortByValue.onclick = function () {
     })
     renderNameValueList();
 };
-
 
